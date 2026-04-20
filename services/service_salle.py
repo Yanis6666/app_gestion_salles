@@ -51,3 +51,6 @@ def modifier_salle(self, salle) :
 
     self.dao.update_salle(salle)
     return True, "Modification OK"
+
+def supprimer_salle(self, code) :
+    self.dao.delete_salle(code)
