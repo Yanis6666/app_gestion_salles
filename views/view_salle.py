@@ -60,6 +60,8 @@ class ViewSalle(ctk.CTk) :
 
         self.treeList.pack(expand=True, fill="both", padx=10, pady=10)
 
+        self.lister_salles()
+
     def lister_salles(self) :
         self.treeList.delete(*self.treeList.get_children())
 
