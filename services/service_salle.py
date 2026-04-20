@@ -29,3 +29,8 @@ class ServiceSalle:
 
     def recuperer_salles(self):
         return self.dao.get_salles()
+
+from Data.dao_salle import DataSalle
+class ServiceSalle :
+    def __init__(self):
+        self.dao=DataSalle()
