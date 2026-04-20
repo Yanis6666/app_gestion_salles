@@ -45,6 +45,22 @@ class ViewSalle(ctk.CTk) :
         self.btn_search =ctk.CTkButton(self.frame_btn, text="Rechercher")
         self.btn_search.pack( side="left" , padx=5 )
 
+        self.cadreList = ctk.CTkFrame(self)
+        self.cadreList.pack(pady=10)
+
+        self.treeList = ttk.Treeview(
+            self.cadreList,
+            columns=( "code", "description", "categorie", "capacite"),
+            show= "headings"
+        )
+        self.treeList.heading( "code", text ="CODE")
+        self.treeList.heading("description", text = "Description")
+        self.treeList.heading("categorie", text="Catégorie" )
+        self.treeList.heading("capacite" , text= "Capacité")
+
+        self.treeList.pack(expand=True, fill="both", padx=10, pady=10)
+
+
 
     def ajouter_salle(self):
         salle=Salle(
@@ -86,4 +102,6 @@ self.btn_del.configure(command=self.supprimer_salle)
 
             self.entry_cap.delete(0, "end" )
             self.entry_cap.insert(0, salle.capacite)
-self.btn_search.configure (command=self.rechercher_salle)
+self.btn_search.configure ( command=self.rechercher_salle )
+
+from tkinter import ttk
