@@ -35,6 +35,7 @@ class ServiceSalle :
     def __init__(self):
         self.dao=DataSalle()
 
+
 def ajouter_salle(self, salle):
     if not salle.code or not salle.description or not salle.categorie:
         return False, "Champs vides"
@@ -42,3 +43,11 @@ def ajouter_salle(self, salle):
         return False, "La capacité est invalide"
     self.dao.insert_salle(salle)
     return True, "L'ajout est réussi"
+
+
+def modifier_salle(self, salle) :
+    if salle.capacite < 1 :
+        return False, "La capacité est invalide"
+
+    self.dao.update_salle(salle)
+    return True, "Modification OK"
