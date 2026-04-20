@@ -13,3 +13,13 @@ def insert_salle(self, salle):
     )
     conn.commit()
     conn.close()
+
+def update_salle(self, salle):
+    conn=self.get_connection()
+    cursor =conn.cursor()
+    cursor.execute(
+        "UPDATE salle SET description=%s, categorie=%s, capacite=%s WHERE code=%s",
+        (salle.description, salle.categorie, salle.capacite, salle.code)
+    )
+    conn.commit()
+    conn.close()
