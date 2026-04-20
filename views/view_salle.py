@@ -62,17 +62,14 @@ class ViewSalle(ctk.CTk) :
 
         self.lister_salles()
 
-    def lister_salles(self) :
-        self.treeList.delete(*self.treeList.get_children())
+        self.service_salle.ajouter_salle(salle)
+        self.lister_salles()
 
-        liste=self.service_salle.recuperer_salles()
-        for s in liste:
-            self.treeList.insert (
-                "",
-                "end",
-                values=(s.code, s.description, s.categorie, s.capacite)
-            )
+        self.service_salle.modifier_salle(salle)
+        self.lister_salles()
 
+        self.service_salle.supprimer_salle(code)
+        self.lister_salles()
 
     def ajouter_salle(self):
         salle=Salle(
@@ -85,7 +82,7 @@ class ViewSalle(ctk.CTk) :
 self.btn_add.configure(command=self.ajouter_salle)
 
 
-    def modifier_salle(self) :
+   def modifier_salle(self):
         salle=Salle(
             self.entry_code.get(),
             self.entry_desc.get(),
@@ -96,13 +93,13 @@ self.btn_add.configure(command=self.ajouter_salle)
 self.btn_mod.configure(command=self.modifier_salle)
 
 
-   def supprimer_salle(self) :
+   def supprimer_salle(self):
         code =self.entry_code.get()
         self.service_salle.supprimer_salle(code)
 self.btn_del.configure(command=self.supprimer_salle)
 
 
-    def rechercher_salle(self) :
+    def rechercher_salle(self):
         code=self.entry_code.get()
         salle =self.service_salle.rechercher_salle(code)
         if salle :
@@ -117,3 +114,15 @@ self.btn_del.configure(command=self.supprimer_salle)
 self.btn_search.configure ( command=self.rechercher_salle )
 
 from tkinter import ttk
+
+
+def lister_salles(self):
+    self.treeList.delete(*self.treeList.get_children())
+    liste = self.service_salle.recuperer_salles()
+    for s in liste:
+        self.treeList.insert(
+            "",
+            "end",
+            values=(s.code, s.description, s.categorie, s.capacite)
+        )
+
