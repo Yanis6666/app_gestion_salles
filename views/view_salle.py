@@ -45,6 +45,7 @@ class ViewSalle(ctk.CTk) :
         self.btn_search =ctk.CTkButton(self.frame_btn, text="Rechercher")
         self.btn_search.pack( side="left" , padx=5 )
 
+
     def ajouter_salle(self):
         salle=Salle(
             self.entry_code.get(),
@@ -55,3 +56,13 @@ class ViewSalle(ctk.CTk) :
         self.service_salle.ajouter_salle(salle)
 self.btn_add.configure(command=self.ajouter_salle)
 
+
+  def modifier_salle(self) :
+        salle=Salle(
+            self.entry_code.get(),
+            self.entry_desc.get(),
+            self.entry_cat.get(),
+            int(self.entry_cap.get())
+        )
+        self.service_salle.modifier_salle(salle)
+self.btn_mod.configure(command=self.modifier_salle)
