@@ -57,7 +57,7 @@ class ViewSalle(ctk.CTk) :
 self.btn_add.configure(command=self.ajouter_salle)
 
 
-  def modifier_salle(self) :
+    def modifier_salle(self) :
         salle=Salle(
             self.entry_code.get(),
             self.entry_desc.get(),
@@ -66,3 +66,9 @@ self.btn_add.configure(command=self.ajouter_salle)
         )
         self.service_salle.modifier_salle(salle)
 self.btn_mod.configure(command=self.modifier_salle)
+
+
+   def supprimer_salle(self) :
+        code =self.entry_code.get()
+        self.service_salle.supprimer_salle(code)
+self.btn_del.configure(command=self.supprimer_salle)
