@@ -72,3 +72,18 @@ self.btn_mod.configure(command=self.modifier_salle)
         code =self.entry_code.get()
         self.service_salle.supprimer_salle(code)
 self.btn_del.configure(command=self.supprimer_salle)
+
+
+    def rechercher_salle(self) :
+        code=self.entry_code.get()
+        salle =self.service_salle.rechercher_salle(code)
+        if salle :
+            self.entry_desc.delete(0, "end" )
+            self.entry_desc.insert(0, salle.description)
+
+            self.entry_cat.delete(0,"end" )
+            self.entry_cat.insert( 0, salle.categorie)
+
+            self.entry_cap.delete(0, "end" )
+            self.entry_cap.insert(0, salle.capacite)
+self.btn_search.configure (command=self.rechercher_salle)
